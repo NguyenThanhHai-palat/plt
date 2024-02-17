@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta name="description" content="View File Has Loaded On Web">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://10a02.palat001.cf/data/source/web/2bootstrap.css" rel="stylesheet">
+    <script type="text/javascript">
+    init_reload();
+    function init_reload(){
+        setInterval( function() {
+                   window.location.reload();
+          },10000);
+    }
+    </script>
+    <script>
+      window.onload= async ()=>{
+        let wishes = await fetch('/list').then(response=>response.json())
+
+        let output = ''
+        for(let wish of wishes) {
+
+          let description = ''
+
+
+          var link = wish.filepath;
+          if((wish.filetype !== "a")||(wish.filetype !=="app")){
+          output += `
+          <li>
+            <span>Tên File: ${wish.filename}</span><br><span>Mô Tả : ${wish.meta.description}</span><br><span> ${wish.timestamp} - TẢI LÊN: ${wish.author}</span><br><a target="_blank" download="${wish.filename}" href="${link}">NHẤN VÀO ĐÂY ĐỂ TẢI XUỐNG</a><hr>
+          </li>`
+          } 
+
+        }
+
+        const outputList = `<ul>${output}</ul>`
+
+        document.querySelector("body").insertAdjacentHTML("beforeend", outputList)
+        console.log(wishes)
+      }
+    </script>
+  </head>
+  <body>
+    
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <title></title>
+    <meta name="description" content="TẢI FILE LÊN">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https:/palat001.cf/data/source/web/2bootstrap.css" rel="stylesheet">
+    
+    <script>
+       window.onload=()=>{
+        const routes = [
+            {url:'/display',text:'Danh sách tài liệu đã tải lên'},
+            {url:'/list',text:'Danh sách tài liệu đã tải lên (json)'},
+        ]
+
+        let routesListItems = ''
+
+        for(let route of routes ) {
+            routesListItems += `<li><a href="${route.url}">${route.text}</li>`
+        }
+
+        const routesList = `<ul>${routesListItems}</ul>`
+        document.querySelector("nav").insertAdjacentHTML('beforeend', routesList)
+ 
+      }
+    </script>
+  </head>
+  
+  <body>
+
+    <div style="text-align:center">
+      
+     <form id="imageUploader" action="/upload" method="post" style="text-align:center" enctype="multipart/form-data" >      
+       <br>
+       <label for="image" ></label><br>
+       <input type="file"  class="form-control" name="image" id="image" /><br> 
+       <label for="description">KHÁI QUÁT NỘI DUNG TỆP TIN</label><br>
+       <textarea name="description" class="form-control" id="description"></textarea>
+      <br>
+       <input class="btn btn-primary" value="TẢI LÊN" type="submit"/>
+    </form>
+    </div>
+    <nav></nav>
+  </body>
+</html>
